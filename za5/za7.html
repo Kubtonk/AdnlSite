@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <script>
+  function kk() {
+
+    var ves = document.getElementById('ves').value;
+    
+    if (ves < 60) {
+        lol.textContent ="Лёгкий вес";
+    }
+    else if (ves < 64) {
+        lol.textContent ="Первый полусредний вес";
+    }
+    else if (ves < 69) {
+        lol.textContent ="Полусредний вес";
+    }
+    else { lol.textContent ="Абсолютный вес"; }
+    
+    
+  }
+
+    </script>
+</head>
+<body>
+        <input id="ves" type="text"><button onclick="kk()">Какая категория</button>
+        <p id="lol"></p>
+</body>
+</html>

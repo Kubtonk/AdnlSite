@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ccc; 
+}
+
+#container {
+    max-width: 1000px; 
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    grid-gap: 40px; 
+    padding: 20px;
+    background-color: #fff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+.formula {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+.formula h2 {
+    margin-top: 0;
+}
+
+.formula form {
+    margin-bottom: 20px; 
+}
+
+.formula form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.formula form input[type="number"] {
+    width: calc(100% - 20px); 
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+}
+
+.formula form button {
+    width: calc(100% - 20px); 
+    padding: 10px 0; 
+    background-color: #dd670c;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.formula form button:hover {
+    background-color: #656565;
+}
+
+.result {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}

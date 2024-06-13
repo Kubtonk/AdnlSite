@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Месяц</title>
+    <script>
+  function kk() {
+     
+    let zuz = document.getElementById('km').value;
+
+    let zuz1 = document.getElementById('metr').value;
+
+    if (isNaN(zuz) || isNaN(zuz1)) {
+      document.getElementById('lol').innerText = 'Это не число';
+      return;
+    }
+     
+    let zuzz = zuz / 3.6;  // 1000:3600
+    
+    if (zuzz > zuz1) { document.getElementById('lol').innerText=`${zuz} км/час > ${zuz1} метр/сек`; }
+
+    else if (zuzz < zuz1) { document.getElementById('lol').innerText=`${zuz} км/час < ${zuz1} метр/сек`; }
+
+    else { document.getElementById('lol').innerText=`${zuz} км/час = ${zuz1} метр/сек`; }
+
+
+
+  }
+
+    </script>
+</head>
+<body>
+  Км/час:<input id="km" type="text">
+  Метр/сек:<input id="metr" type="text"><button onclick="kk()">Вычислить</button>
+        <p id="lol"></p>
+</body>
+</html>

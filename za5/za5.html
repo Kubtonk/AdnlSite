@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script>
+        function kikish(){
+        
+            var text = document.getElementById("text").value;
+
+            
+            
+
+            if (text.includes('А') || text.includes('а')) {
+                puk.textContent += 'А'; }
+
+              
+             
+             else {  puk.textContent += 'Буква А не существует'; }
+
+             if (text.includes('М') && text.includes('Ы') || text.includes('м') && text.includes('ы')  || text.includes('М') && text.includes('ы') ) {
+                puk.textContent += 'Мы';}
+            }
+
+
+        
+    </script>
+</head>
+<body>
+    <input type="text" id="text"><button onclick="kikish()">Проверка</button><p id="puk"></p>
+
+
+</body>
+</html>

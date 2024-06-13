@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Месяц</title>
+    <script>
+  function kk() {
+     
+    var zuz = document.getElementById('num').value.trim();
+
+
+    switch (zuz) {
+        case '1':
+        document.getElementById('lol').innerText = `Январь, Зима, 31 день`;
+        break;
+        case '2':
+        document.getElementById('lol').innerText = `Февраль, Зима, 28 день (в високосный 29)`;
+        break;
+        case '3':
+        document.getElementById('lol').innerText = `Март, Весна, 31 день`;
+        break;
+        case '4':
+        document.getElementById('lol').innerText = `Апрель, Весна, 30 день`;
+        break;
+        case '5':
+        document.getElementById('lol').innerText = `Май, Весна, 31 день`;
+        break;
+        case '6':
+        document.getElementById('lol').innerText = `Июнь, Лето, 30 день`;
+        break;
+        case '7':
+        document.getElementById('lol').innerText = `Июль, Лето, 31 день`;
+        break;
+        case '8':
+        document.getElementById('lol').innerText = `Август, Лето, 31 день`;
+        break;
+        case '9':
+        document.getElementById('lol').innerText = `Сентябрь, Осень, 30 день`;
+        break;
+        case '10':
+        document.getElementById('lol').innerText = `Октябрь, Осень, 31 день`;
+        break;
+        case '11':
+        document.getElementById('lol').innerText = `Ноябрь, Осень, 30 день`;
+        break;
+        case '12':
+        document.getElementById('lol').innerText = `Декабрь, Зима, 31 день`;
+        break;
+    
+        default:
+        document.getElementById('lol').innerText = "Нет такого месяца";
+        break;
+    }
+
+     
+
+
+
+
+  }
+
+    </script>
+</head>
+<body>
+        <input id="num" type="text"><button onclick="kk()">Месяц</button>
+        <p id="lol"></p>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Светофор</title>
+    <style>
+        #trafficLight {
+            width: 150px;
+            height: 300px;
+            background-color: black;
+            margin-bottom: 20px;
+        }
+        .light {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="trafficLight">
+        <img id="lightImage" class="light" src="img1.jpg" alt="Светофор">
+    </div>
+    <button onclick="changeColor('red')">Красный</button>
+    <button onclick="changeColor('yellow')">Желтый</button>
+    <button onclick="changeColor('green')">Зеленый</button>
+    <button onclick="changeColor('stop')">стоп</button>
+
+    <script>
+        let currentColor = 'red';
+        let timer;
+
+        function changeColor(color) {
+            clearTimeout(timer); // 
+            setColor(color);     // 
+            startTrafficLight(); // 
+        }
+
+        function setColor(color) {
+            const lightImage = document.getElementById('lightImage');
+            if (color === 'red') {
+                lightImage.src = 'img2.jpg';
+            } else if (color === 'yellow') {
+                lightImage.src = 'img3.jpg';
+            } else if (color === 'green') {
+                lightImage.src = 'img4.jpg';
+            } else {
+                lightImage.src = 'img1.jpg';
+            }
+            currentColor = color;
+            return;
+        }
+
+        function startTrafficLight() {
+            if (currentColor === 'red') {
+                setColor('red');
+                timer = setTimeout(() => {
+                    setColor('yellow');
+                    startTrafficLight();
+                }, 30000); // 30 секунд на красный
+            } else if (currentColor === 'yellow') {
+                setColor('yellow');
+                timer = setTimeout(() => {
+                    setColor('green');
+                    startTrafficLight();
+                }, 5000); // 5 секунд на жёлтый
+            } else if (currentColor === 'green') {
+                setColor('green');
+                timer = setTimeout(() => {
+                    setColor('red');
+                    startTrafficLight();
+                }, 20000); // 20 секунд на зелёный
+            }
+        }
+
+        startTrafficLight();
+    </script>
+</body>
+</html>

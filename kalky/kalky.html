@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формулы геометрии и физики</title>
+    <link rel="stylesheet" href="kalky.css">
+</head>
+<body>
+    <div id="container">
+        <div class="formula">
+            <h2>Площадь и угол при основании равнобедренного треугольника</h2>
+            <form id="triangleForm">
+                <label for="triangleBase">Основание (a):</label>
+                <input type="number" id="triangleBase" name="triangleBase"><br>
+                <label for="triangleHeight">Высота (h):</label>
+                <input type="number" id="triangleHeight" name="triangleHeight"><br>
+                <button type="button" onclick="calculateTriangle()">Вычислить</button>
+            </form>
+            <div class="result" id="triangleResult"></div>
+        </div>
+
+        <div class="formula">
+            <h2>Площадь и периметр прямоугольника</h2>
+            <form id="rectangleForm">
+                <label for="rectangleWidth">Ширина (a):</label>
+                <input type="number" id="rectangleWidth" name="rectangleWidth"><br>
+                <label for="rectangleHeight">Высота (b):</label>
+                <input type="number" id="rectangleHeight" name="rectangleHeight"><br>
+                <button type="button" onclick="calculateRectangle()">Вычислить</button>
+            </form>
+            <div class="result" id="rectangleResult"></div>
+        </div>
+
+        <div class="formula">
+            <h2>Площадь и периметр квадрата</h2>
+            <form id="squareForm">
+                <label for="squareSide">Сторона (a):</label>
+                <input type="number" id="squareSide" name="squareSide"><br>
+                <button type="button" onclick="calculateSquare()">Вычислить</button>
+            </form>
+            <div class="result" id="squareResult"></div>
+        </div>
+
+        <div class="formula">
+            <h2>Объем и площадь боковой поверхности параллелепипеда</h2>
+            <form id="parallelepipedForm">
+                <label for="parallelepipedA">Сторона a:</label>
+                <input type="number" id="parallelepipedA" name="parallelepipedA"><br>
+                <label for="parallelepipedB">Сторона b:</label>
+                <input type="number" id="parallelepipedB" name="parallelepipedB"><br>
+                <label for="parallelepipedC">Сторона c:</label>
+                <input type="number" id="parallelepipedC" name="parallelepipedC"><br>
+                <button type="button" onclick="calculateParallelepiped()">Вычислить</button>
+            </form>
+            <div class="result" id="parallelepipedResult"></div>
+        </div>
+
+        <div class="formula">
+            <h2>Площадь кольца</h2>
+            <form id="ringForm">
+                <label for="ringOuterRadius">Внешний радиус (R):</label>
+                <input type="number" id="ringOuterRadius" name="ringOuterRadius"><br>
+                <label for="ringInnerRadius">Внутренний радиус (r):</label>
+                <input type="number" id="ringInnerRadius" name="ringInnerRadius"><br>
+                <button type="button" onclick="calculateRing()">Вычислить</button>
+            </form>
+            <div class="result" id="ringResult"></div>
+        </div>
+
+ 
+        <div class="formula">
+            <h2>Площадь боковой поверхности и объем цилиндра</h2>
+            <form id="cylinderForm">
+                <label for="cylinderRadius">Радиус основания (r):</label>
+                <input type="number" id="cylinderRadius" name="cylinderRadius"><br>
+                <label for="cylinderHeight">Высота (h):</label>
+                <input type="number" id="cylinderHeight" name="cylinderHeight"><br>
+                <button type="button" onclick="calculateCylinder()">Вычислить</button>
+            </form>
+            <div class="result" id="cylinderResult"></div>
+        </div>
+
+
+        <div class="formula">
+            <h2>Площадь и периметр прямоугольного треугольника</h2>
+            <form id="rightTriangleForm">
+                <label for="rightTriangleA">Катет a:</label>
+                <input type="number" id="rightTriangleA" name="rightTriangleA"><br>
+                <label for="rightTriangleB">Катет b:</label>
+                <input type="number" id="rightTriangleB" name="rightTriangleB"><br>
+                <label for="rightTriangleC">Гипотенуза c:</label>
+                <input type="number" id="rightTriangleC" name="rightTriangleC"><br>
+                <button type="button" onclick="calculateRightTriangle()">Вычислить</button>
+            </form>
+            <div class="result" id="rightTriangleResult"></div>
+        </div>
+
+  
+        <div class="formula">
+            <h2>Объем и площадь поверхности куба</h2>
+            <form id="cubeForm">
+                <label for="cubeSide">Сторона (a):</label>
+                <input type="number" id="cubeSide" name="cubeSide"><br>
+                <button type="button" onclick="calculateCube()">Вычислить</button>
+            </form>
+            <div class="result" id="cubeResult"></div>
+        </div>
+
+
+<div class="formula">
+    <h2>Периметр и площадь треугольника</h2>
+    <form id="trianglePerimeterAreaForm">
+        <label for="triangleSideA">Сторона a:</label>
+        <input type="number" id="triangleSideA" name="triangleSideA"><br>
+        <label for="triangleSideB">Сторона b:</label>
+        <input type="number" id="triangleSideB" name="triangleSideB"><br>
+        <label for="triangleSideC">Сторона c:</label>
+        <input type="number" id="triangleSideC" name="triangleSideC"><br>
+        <button type="button" onclick="calculateTrianglePerimeterArea()">Вычислить</button>
+    </form>
+    <div class="result" id="trianglePerimeterAreaResult"></div>
+</div>
+
+
+<div class="formula">
+    <h2>Площадь основания и объем цилиндра</h2>
+    <form id="cylinderAreaVolumeForm">
+        <label for="cylinderRadiuss">Радиус основания (r):</label>
+        <input type="number" id="cylinderRadiuss" name="cylinderRadius"><br>
+        <label for="cylinderHeightt">Высота (h):</label>
+        <input type="number" id="cylinderHeightt" name="cylinderHeight"><br>
+        <button type="button" onclick="calculateCylinderAreaVolume()">Вычислить</button>
+    </form>
+    <div class="result" id="cylinderAreaVolumeResult"></div>
+</div>
+
+<div class="formula">
+    <h2>Объем и площадь основания параллелепипеда</h2>
+    <form id="d1Form">
+        <label for="d1A">Сторона a:</label>
+        <input type="number" id="d1A" name="d1A"><br>
+        <label for="d1B">Сторона b:</label>
+        <input type="number" id="d1B" name="d1B"><br>
+        <label for="d1C">Сторона c:</label>
+        <input type="number" id="d1C" name="d1C"><br>
+        <button type="button" onclick="calculateD1()">Вычислить</button>
+    </form>
+    <div class="result" id="d1Result"></div>
+</div>
+
+
+<div class="formula">
+    <h2>Площадь основания и объем конуса</h2>
+    <form id="d2Form">
+        <label for="d2Radius">Радиус основания (r):</label>
+        <input type="number" id="d2Radius" name="d2Radius"><br>
+        <label for="d2Height">Высота (h):</label>
+        <input type="number" id="d2Height" name="d2Height"><br>
+        <button type="button" onclick="calculateD2()">Вычислить</button>
+    </form>
+    <div class="result" id="d2Result"></div>
+</div>
+
+
+<div class="formula">
+    <h2>Гипотенуза и площадь прямоугольного треугольника</h2>
+    <form id="d3Form">
+        <label for="d3A">Катет a:</label>
+        <input type="number" id="d3A" name="d3A"><br>
+        <label for="d3B">Катет b:</label>
+        <input type="number" id="d3B" name="d3B"><br>
+        <button type="button" onclick="calculateD3()">Вычислить</button>
+    </form>
+    <div class="result" id="d3Result"></div>
+</div>
+
+
+<div class="formula">
+    <h2>Высота и площадь равнобедренной трапеции</h2>
+    <form id="d4Form">
+        <label for="d4A">Основание a:</label>
+        <input type="number" id="d4A" name="d4A"><br>
+        <label for="d4B">Основание b:</label>
+        <input type="number" id="d4B" name="d4B"><br>
+        <button type="button" onclick="calculateD4()">Вычислить</button>
+    </form>
+    <div class="result" id="d4Result"></div>
+</div>
+
+
+<div class="formula">
+    <h2>Площадь поверхности и объем шара</h2>
+    <form id="d5Form">
+        <label for="d5Radius">Радиус (R):</label>
+        <input type="number" id="d5Radius" name="d5Radius"><br>
+        <button type="button" onclick="calculateD5()">Вычислить</button>
+    </form>
+    <div class="result" id="d5Result"></div>
+</div>
+
+
+<div class="formula">
+    <h2>Скорость в конце пути и путь, пройденный телом за время t с ускорением a и начальной скорости V0</h2>
+    <form id="d6Form">
+        <label for="d6Acceleration">Ускорение (a):</label>
+        <input type="number" id="d6Acceleration" name="d6Acceleration"><br>
+        <label for="d6InitialVelocity">Начальная скорость (V0):</label>
+        <input type="number" id="d6InitialVelocity" name="d6InitialVelocity"><br>
+        <label for="d6Time">Время (t):</label>
+        <input type="number" id="d6Time" name="d6Time"><br>
+        <button type="button" onclick="calculateD6()">Вычислить</button>
+    </form>
+    <div class="result" id="d6Result"></div>
+</div>
+
+<div class="formula">
+    <h2>Радиус круга, вписанного в треугольник со сторонами a, b, c</h2>
+    <form id="d7Form">
+        <label for="d7SideA">Сторона a:</label>
+        <input type="number" id="d7SideA" name="d7SideA"><br>
+        <label for="d7SideB">Сторона b:</label>
+        <input type="number" id="d7SideB" name="d7SideB"><br>
+        <label for="d7SideC">Сторона c:</label>
+        <input type="number" id="d7SideC" name="d7SideC"><br>
+        <button type="button" onclick="calculateD7()">Вычислить</button>
+    </form>
+    <div class="result" id="d7Result"></div>
+</div>
+
+<div class="formula">
+    <h2>Кинетическая энергия тела массой m, движущегося со скоростью v</h2>
+    <form id="d8Form">
+        <label for="d8Mass">Масса (m):</label>
+        <input type="number" id="d8Mass" name="d8Mass"><br>
+        <label for="d8Velocity">Скорость (v):</label>
+        <input type="number" id="d8Velocity" name="d8Velocity"><br>
+        <button type="button" onclick="calculateD8()">Вычислить</button>
+    </form>
+    <div class="result" id="d8Result"></div>
+</div>
+
+<div class="formula">
+    <h2>Площадь прямоугольного треугольника с гипотенузой c и одним из катетов a</h2>
+    <form id="d9Form">
+        <label for="d9SideA">Катет a:</label>
+        <input type="number" id="d9SideA" name="d9SideA"><br>
+        <label for="d9SideC">Гипотенуза c:</label>
+        <input type="number" id="d9SideC" name="d9SideC"><br>
+        <button type="button" onclick="calculateD9()">Вычислить</button>
+    </form>
+    <div class="result" id="d9Result"></div>
+</div>
+
+<div class="formula">
+    <h2>Периметр и площадь прямоугольного треугольника с катетами a, b</h2>
+    <form id="d10Form">
+        <label for="d10SideA">Катет a:</label>
+        <input type="number" id="d10SideA" name="d10SideA"><br>
+        <label for="d10SideB">Катет b:</label>
+        <input type="number" id="d10SideB" name="d10SideB"><br>
+        <button type="button" onclick="calculateD10()">Вычислить</button>
+    </form>
+    <div class="result" id="d10Result"></div>
+</div>
+
+<div class="formula">
+    <h2>Высота и площадь равнобедренного треугольника с основанием a и углом при основании</h2>
+    <form id="d11Form">
+        <label for="d11Base">Основание a:</label>
+        <input type="number" id="d11Base" name="d11Base"><br>
+        <label for="d11Angle">Угол при основании:</label>
+        <input type="number" id="d11Angle" name="d11Angle"><br>
+        <button type="button" onclick="calculateD11()">Вычислить</button>
+    </form>
+    <div class="result" id="d11Result"></div>
+</div>
+
+<div class="formula">
+    <h2>Радиус круга, описанного вокруг треугольника со сторонами a, b, c</h2>
+    <form id="d12Form">
+        <label for="d12SideA">Сторона a:</label>
+        <input type="number" id="d12SideA" name="d12SideA"><br>
+        <label for="d12SideB">Сторона b:</label>
+        <input type="number" id="d12SideB" name="d12SideB"><br>
+        <label for="d12SideC">Сторона c:</label>
+        <input type="number" id="d12SideC" name="d12SideC"><br>
+        <button type="button" onclick="calculateD12()">Вычислить</button>
+    </form>
+    <div class="result" id="d12Result"></div>
+</div>
+
+<div class="formula">
+    <h2>Периметр и площадь параллелограмма со сторонами a, b и острым углом альфа</h2>
+    <form id="d13Form">
+        <label for="d13SideA">Сторона a:</label>
+        <input type="number" id="d13SideA" name="d13SideA"><br>
+        <label for="d13SideB">Сторона b:</label>
+        <input type="number" id="d13SideB" name="d13SideB"><br>
+        <label for="d13Alpha">Угол альфа (в градусах):</label>
+        <input type="number" id="d13Alpha" name="d13Alpha"><br>
+        <button type="button" onclick="calculateD13()">Вычислить</button>
+    </form>
+    <div class="result" id="d13Result"></div>
+</div>
+
+    </div>
+
+    <script>
+        function calculateTriangle() {
+            var base = parseFloat(document.getElementById('triangleBase').value);
+            var height = parseFloat(document.getElementById('triangleHeight').value);
+
+            if (!isNaN(base) && !isNaN(height) && base > 0 && height > 0) {
+                var area = 0.5 * base * height;
+                var angle = Math.atan(height / (base / 2)) * (180 / Math.PI);
+                document.getElementById('triangleResult').innerHTML = "Площадь: " + area.toFixed(2) + "<br>Угол при основании: " + angle.toFixed(2) + "°";
+            } else {
+                document.getElementById('triangleResult').innerHTML = "Введите положительные числа для основания и высоты треугольника.";
+            }
+        }
+
+        function calculateRectangle() {
+            var width = parseFloat(document.getElementById('rectangleWidth').value);
+            var height = parseFloat(document.getElementById('rectangleHeight').value);
+
+            if (!isNaN(width) && !isNaN(height) && width > 0 && height > 0) {
+                var area = width * height;
+                var perimeter = 2 * (width + height);
+                document.getElementById('rectangleResult').innerHTML = "Площадь: " + area.toFixed(2) + "<br>Периметр: " + perimeter.toFixed(2);
+            } else {
+                document.getElementById('rectangleResult').innerHTML = "Введите положительные числа для ширины и высоты прямоугольника.";
+            }
+        }
+
+        function calculateSpeed() {
+            var time = parseFloat(document.getElementById('time').value);
+            var acceleration = parseFloat(document.getElementById('acceleration').value);
+
+            if (!isNaN(time) && !isNaN(acceleration) && time > 0) {
+                var velocity = acceleration * time;
+                var distance = 0.5 * acceleration * Math.pow(time, 2);
+                document.getElementById('speedResult').innerHTML = "Скорость в конце пути: " + velocity.toFixed(2) + "<br>Пройденный путь: " + distance.toFixed(2);
+            } else {
+                document.getElementById('speedResult').innerHTML = "Введите положительные числа для времени и ускорения.";
+            }
+        }
+
+        function calculateSquare() {
+            var side = parseFloat(document.getElementById('squareSide').value);
+
+            if (!isNaN(side) && side > 0) {
+                var area = Math.pow(side, 2);
+                var perimeter = 4 * side;
+                document.getElementById('squareResult').innerHTML = "Площадь: " + area.toFixed(2) + "<br>Периметр: " + perimeter.toFixed(2);
+            } else {
+                document.getElementById('squareResult').innerHTML = "Введите положительное число для стороны квадрата.";
+            }
+        }
+
+        function calculateParallelepiped() {
+            var sideA = parseFloat(document.getElementById('parallelepipedA').value);
+            var sideB = parseFloat(document.getElementById('parallelepipedB').value);
+            var sideC = parseFloat(document.getElementById('parallelepipedC').value);
+
+            if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC) && sideA > 0 && sideB > 0 && sideC > 0) {
+                var volume = sideA * sideB * sideC;
+                var surfaceArea = 2 * (sideA * sideB + sideA * sideC + sideB * sideC);
+                document.getElementById('parallelepipedResult').innerHTML = "Объем: " + volume.toFixed(2) + "<br>Площадь боковой поверхности: " + surfaceArea.toFixed(2);
+            } else {
+                document.getElementById('parallelepipedResult').innerHTML = "Введите положительные числа для сторон параллелепипеда.";
+            }
+        }
+
+        function calculateRing() {
+            var outerRadius = parseFloat(document.getElementById('ringOuterRadius').value);
+            var innerRadius = parseFloat(document.getElementById('ringInnerRadius').value);
+
+            if (!isNaN(outerRadius) && !isNaN(innerRadius) && outerRadius > innerRadius && outerRadius > 0 && innerRadius > 0) {
+                var area = Math.PI * (Math.pow(outerRadius, 2) - Math.pow(innerRadius, 2));
+                document.getElementById('ringResult').innerHTML = "Площадь кольца: " + area.toFixed(2);
+            } else {
+                document.getElementById('ringResult').innerHTML = "Введите положительные числа для внешнего и внутреннего радиусов кольца.";
+            }
+        }
+
+        function calculateCylinder() {
+            var radius = parseFloat(document.getElementById('cylinderRadius').value);
+            var height = parseFloat(document.getElementById('cylinderHeight').value);
+
+            if (!isNaN(radius) && !isNaN(height) && radius > 0 && height > 0) {
+                var volume = Math.PI * Math.pow(radius, 2) * height;
+                var surfaceArea = 2 * Math.PI * radius * (radius + height);
+                document.getElementById('cylinderResult').innerHTML = "Объем: " + volume.toFixed(2) + "<br>Площадь боковой поверхности: " + surfaceArea.toFixed(2);
+            } else {
+                document.getElementById('cylinderResult').innerHTML = "Введите положительные числа для радиуса основания и высоты цилиндра.";
+            }
+        }
+
+        function calculateRightTriangle() {
+            var sideA = parseFloat(document.getElementById('rightTriangleA').value);
+            var sideB = parseFloat(document.getElementById('rightTriangleB').value);
+            var sideC = parseFloat(document.getElementById('rightTriangleC').value);
+
+            if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC) && sideA > 0 && sideB > 0 && sideC > 0) {
+                var area = 0.5 * sideA * sideB;
+                var perimeter = sideA + sideB + sideC;
+                document.getElementById('rightTriangleResult').innerHTML = "Площадь: " + area.toFixed(2) + "<br>Периметр: " + perimeter.toFixed(2);
+            } else {
+                document.getElementById('rightTriangleResult').innerHTML = "Введите положительные числа для катетов и гипотенузы прямоугольного треугольника.";
+            }
+        }
+
+        function calculateCube() {
+            var side = parseFloat(document.getElementById('cubeSide').value);
+
+            if (!isNaN(side) && side > 0) {
+                var volume = Math.pow(side, 3);
+                var surfaceArea = 6 * Math.pow(side, 2);
+                document.getElementById('cubeResult').innerHTML = "Объем: " + volume.toFixed(2) + "<br>Площадь поверхности: " + surfaceArea.toFixed(2);
+            } else {
+                document.getElementById('cubeResult').innerHTML = "Введите положительное число для стороны куба.";
+            }
+        }
+
+        function calculateTrianglePerimeterArea() {
+    var sideA = parseFloat(document.getElementById('triangleSideA').value);
+    var sideB = parseFloat(document.getElementById('triangleSideB').value);
+    var sideC = parseFloat(document.getElementById('triangleSideC').value);
+
+    if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC) && sideA > 0 && sideB > 0 && sideC > 0) {
+        var perimeter = sideA + sideB + sideC;
+        var semiPerimeter = perimeter / 2;
+        var area = Math.sqrt(semiPerimeter * (semiPerimeter - sideA) * (semiPerimeter - sideB) * (semiPerimeter - sideC));
+        
+        document.getElementById('trianglePerimeterAreaResult').innerHTML = "Периметр: " + perimeter.toFixed(2) + "<br>Площадь: " + area.toFixed(2);
+    } else {
+        document.getElementById('trianglePerimeterAreaResult').innerHTML = "Введите положительные числа для всех сторон треугольника.";
+    }
+}
+
+function calculateCylinderAreaVolume() {
+    var radius = parseFloat(document.getElementById('cylinderRadiuss').value);
+    var height = parseFloat(document.getElementById('cylinderHeightt').value);
+
+    if (!isNaN(radius) && !isNaN(height) && radius > 0 && height > 0) {
+        var baseArea = Math.PI * radius ** 2;
+        var volume = baseArea * height;
+
+        document.getElementById('cylinderAreaVolumeResult').innerHTML = "Площадь основания: " + baseArea.toFixed(2) + "<br>Объем цилиндра: " + volume.toFixed(2);
+    } else {
+        document.getElementById('cylinderAreaVolumeResult').innerHTML = "Введите положительные числа для радиуса и высоты цилиндра.";
+    }
+}
+
+function calculateD1() {
+    var sideA = parseFloat(document.getElementById('d1A').value);
+    var sideB = parseFloat(document.getElementById('d1B').value);
+    var sideC = parseFloat(document.getElementById('d1C').value);
+
+    if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC) && sideA > 0 && sideB > 0 && sideC > 0) {
+        var volume = sideA * sideB * sideC;
+        var baseArea = 2 * (sideA * sideB + sideA * sideC + sideB * sideC);
+
+        document.getElementById('d1Result').innerHTML = "Объем: " + volume.toFixed(2) + "<br>Площадь основания: " + baseArea.toFixed(2);
+    } else {
+        document.getElementById('d1Result').innerHTML = "Введите положительные числа для всех сторон параллелепипеда.";
+    }
+}
+
+
+function calculateD2() {
+    var radius = parseFloat(document.getElementById('d2Radius').value);
+    var height = parseFloat(document.getElementById('d2Height').value);
+
+    if (!isNaN(radius) && !isNaN(height) && radius > 0 && height > 0) {
+        var baseArea = Math.PI * radius ** 2;
+        var volume = (1 / 3) * baseArea * height;
+
+        document.getElementById('d2Result').innerHTML = "Площадь основания: " + baseArea.toFixed(2) + "<br>Объем конуса: " + volume.toFixed(2);
+    } else {
+        document.getElementById('d2Result').innerHTML = "Введите положительные числа для радиуса и высоты конуса.";
+    }
+}
+
+
+function calculateD3() {
+    var sideA = parseFloat(document.getElementById('d3A').value);
+    var sideB = parseFloat(document.getElementById('d3B').value);
+
+    if (!isNaN(sideA) && !isNaN(sideB) && sideA > 0 && sideB > 0) {
+        var hypotenuse = Math.sqrt(sideA * 2 + sideB * 2);
+        var area = (sideA * sideB) / 2;
+
+        document.getElementById('d3Result').innerHTML = "Гипотенуза: " + hypotenuse.toFixed(2) + "<br>Площадь: " + area.toFixed(2);
+    } else {
+        document.getElementById('d3Result').innerHTML = "Введите положительные числа для катетов треугольника.";
+    }
+}
+
+
+function calculateD4() {
+    var baseA = parseFloat(document.getElementById('d4A').value);
+    var baseB = parseFloat(document.getElementById('d4B').value);
+
+    if (!isNaN(baseA) && !isNaN(baseB) && baseA > 0 && baseB > 0 && baseB > baseA) {
+        var height = Math.sqrt((baseB * 2 - baseA * 2) / 4);
+        var area = ((baseA + baseB) / 2) * height;
+
+        document.getElementById('d4Result').innerHTML = "Высота: " + height.toFixed(2) + "<br>Площадь: " + area.toFixed(2);
+    } else {
+        document.getElementById('d4Result').innerHTML = "Введите положительные числа для оснований трапеции (b > a).";
+    }
+}
+
+
+function calculateD5() {
+    var radius = parseFloat(document.getElementById('d5Radius').value);
+
+    if (!isNaN(radius) && radius > 0) {
+        var surfaceArea = 4 * Math.PI * radius ** 2;
+        var volume = (4 / 3) * Math.PI * radius ** 3;
+
+        document.getElementById('d5Result').innerHTML = "Площадь поверхности: " + surfaceArea.toFixed(2) + "<br>Объем: " + volume.toFixed(2);
+    } else {
+        document.getElementById('d5Result').innerHTML = "Введите положительное число для радиуса шара.";
+    }
+}
+
+function calculateD6() {
+    var acceleration = parseFloat(document.getElementById('d6Acceleration').value);
+    var initialVelocity = parseFloat(document.getElementById('d6InitialVelocity').value);
+    var time = parseFloat(document.getElementById('d6Time').value);
+
+    if (!isNaN(acceleration) && !isNaN(initialVelocity) && !isNaN(time)) {
+        var finalVelocity = initialVelocity + acceleration * time;
+        var distance = initialVelocity * time + 0.5 * acceleration * time ** 2;
+
+        document.getElementById('d6Result').innerHTML = "Скорость в конце пути: " + finalVelocity.toFixed(2) + "<br>Пройденный путь: " + distance.toFixed(2);
+    } else {
+        document.getElementById('d6Result').innerHTML = "Введите числа для ускорения, начальной скорости и времени.";
+    }
+}
+
+function calculateD7() {
+    var sideA = parseFloat(document.getElementById('d7SideA').value);
+    var sideB = parseFloat(document.getElementById('d7SideB').value);
+    var sideC = parseFloat(document.getElementById('d7SideC').value);
+
+    if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC) && sideA > 0 && sideB > 0 && sideC > 0) {
+        var perimeter = (sideA + sideB + sideC) / 2;
+        var radius = Math.sqrt((perimeter - sideA) * (perimeter - sideB) * (perimeter - sideC) / perimeter);
+
+        document.getElementById('d7Result').innerHTML = "Радиус круга: " + radius.toFixed(2);
+    } else {
+        document.getElementById('d7Result').innerHTML = "Введите положительные числа для всех сторон треугольника.";
+    }
+}
+
+function calculateD8() {
+    var mass = parseFloat(document.getElementById('d8Mass').value);
+    var velocity = parseFloat(document.getElementById('d8Velocity').value);
+
+    if (!isNaN(mass) && !isNaN(velocity) && mass > 0 && velocity >= 0) {
+        var kineticEnergy = 0.5 * mass * velocity ** 2;
+
+        document.getElementById('d8Result').innerHTML = "Кинетическая энергия: " + kineticEnergy.toFixed(2);
+    } else {
+        document.getElementById('d8Result').innerHTML = "Введите положительные числа для массы и скорости.";
+    }
+}
+
+function calculateD9() {
+    var sideA = parseFloat(document.getElementById('d9SideA').value);
+    var sideC = parseFloat(document.getElementById('d9SideC').value);
+
+    if (!isNaN(sideA) && !isNaN(sideC) && sideA > 0 && sideC > 0) {
+        var sideB = Math.sqrt(sideC ** 2 - sideA ** 2);
+        var area = 0.5 * sideA * sideB;
+
+        document.getElementById('d9Result').innerHTML = "Площадь: " + area.toFixed(2);
+    } else {
+        document.getElementById('d9Result').innerHTML = "Введите положительные числа для катета и гипотенузы.";
+    }
+}
+
+function calculateD10() {
+    var sideA = parseFloat(document.getElementById('d10SideA').value);
+    var sideB = parseFloat(document.getElementById('d10SideB').value);
+
+    if (!isNaN(sideA) && !isNaN(sideB) && sideA > 0 && sideB > 0) {
+        var sideC = Math.sqrt(sideA ** 2 + sideB ** 2);
+        var perimeter = sideA + sideB + sideC;
+        var area = 0.5 * sideA * sideB;
+
+        document.getElementById('d10Result').innerHTML = "Периметр: " + perimeter.toFixed(2) + "<br>Площадь: " + area.toFixed(2);
+    } else {
+        document.getElementById('d10Result').innerHTML = "Введите положительные числа для катетов.";
+    }
+}
+
+function calculateD11() {
+    var base = parseFloat(document.getElementById('d11Base').value);
+    var angle = parseFloat(document.getElementById('d11Angle').value);
+
+    if (!isNaN(base) && !isNaN(angle) && base > 0 && angle > 0) {
+        var height = base * Math.sin(angle * Math.PI / 180);
+        var area = 0.5 * base * height;
+
+        document.getElementById('d11Result').innerHTML = "Высота: " + height.toFixed(2) + "<br>Площадь: " + area.toFixed(2);
+    } else {
+        document.getElementById('d11Result').innerHTML = "Введите положительные числа для основания и угла.";
+    }
+}
+
+
+function calculateD12() {
+    var sideA = parseFloat(document.getElementById('d12SideA').value);
+    var sideB = parseFloat(document.getElementById('d12SideB').value);
+    var sideC = parseFloat(document.getElementById('d12SideC').value);
+
+    if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC) && sideA > 0 && sideB > 0 && sideC > 0) {
+        var radius = (sideA * sideB * sideC) / (4 * Math.sqrt((sideA + sideB + sideC) * (-sideA + sideB + sideC) * (sideA - sideB + sideC) * (sideA + sideB - sideC)));
+
+        document.getElementById('d12Result').innerHTML = "Радиус круга: " + radius.toFixed(2);
+    } else {
+        document.getElementById('d12Result').innerHTML = "Введите положительные числа для всех сторон треугольника.";
+    }
+}
+
+
+function calculateD13() {
+    var sideA = parseFloat(document.getElementById('d13SideA').value);
+    var sideB = parseFloat(document.getElementById('d13SideB').value);
+    var alpha = parseFloat(document.getElementById('d13Alpha').value);
+
+    if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(alpha) && sideA > 0 && sideB > 0 && alpha > 0 && alpha < 180) {
+        var perimeter = 2 * (sideA + sideB);
+        var area = sideA * sideB * Math.sin(alpha * Math.PI / 180);
+
+        document.getElementById('d13Result').innerHTML = "Периметр: " + perimeter.toFixed(2) + "<br>Площадь: " + area.toFixed(2);
+    } else {
+        document.getElementById('d13Result').innerHTML = "Введите положительные числа для сторон и острого угла.";
+    }
+}
+
+
+    </script>
+</body>
+</html>
+
+
+
+

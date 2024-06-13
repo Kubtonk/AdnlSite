@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <script>
+  function kk() {
+     
+    let zuz = document.getElementById('num').value;
+    if (zuz.length !== 3 || isNaN(zuz)) { document.getElementById('lol').innerText = "Это не трехзначное число";
+      return;
+     }
+
+     let a = parseInt(zuz[0]);
+     let b = parseInt(zuz[1]);
+     let c = parseInt(zuz[2]);
+
+     let min = Math.min(a, b, c);
+     let sum = a + b + c - min;
+
+
+     document.getElementById('lol').innerText = `Сумма двух самых больших цифр ${zuz} равна ${sum}.`;
+
+  }
+
+    </script>
+</head>
+<body>
+        <input id="num" type="text"><button onclick="kk()">Ответ</button>
+        <p id="lol"></p>
+</body>
+</html>

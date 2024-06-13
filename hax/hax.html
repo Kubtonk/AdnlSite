@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шахматные угрозы</title>
+    <style>
+        .coord-select {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Проверка ходов и угроз шахматных фигур</h1>
+    
+    <label for="whitePiece">Выберите белую фигуру:</label>
+    <select id="whitePiece" onchange="updateTargetCoordinates()">
+        <option value="rook">Ладья</option>
+        <option value="bishop">Слон</option>
+        <option value="queen">Ферзь</option>
+        <option value="knight">Конь</option>
+        <option value="king">Король</option>
+    </select>
+    
+    <label for="blackPiece">Выберите черную фигуру:</label>
+    <select id="blackPiece">
+        <option value="rook">Ладья</option>
+        <option value="bishop">Слон</option>
+        <option value="queen">Ферзь</option>
+        <option value="knight">Конь</option>
+        <option value="king">Король</option>
+    </select>
+
+    <div>
+        <label>Координаты белой фигуры (a, b):</label>
+        <select id="whiteX" class="coord-select" onchange="updateTargetCoordinates()"></select>
+        <select id="whiteY" class="coord-select" onchange="updateTargetCoordinates()"></select>
+    </div>
+
+    <div>
+        <label>Координаты черной фигуры (c, d):</label>
+        <select id="blackX" class="coord-select"></select>
+        <select id="blackY" class="coord-select"></select>
+    </div>
+
+    <div>
+        <label>Координаты целевого поля (e, f):</label>
+        <select id="targetX" class="coord-select"></select>
+        <select id="targetY" class="coord-select"></select>
+    </div>
+    
+    <button onclick="checkMove()">Проверить ход</button>
+    
+    <p id="result"></p>
+    
+    <script>
+        function populateCoordinates() {
+            let coordSelects = document.getElementsByClassName('coord-select');
+            for (let select of coordSelects) {
+                select.innerHTML = '';
+                for (let i = 1; i <= 8; i++) {
+                    let option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    select.appendChild(option);
+                }
+            }
+        }
+
+        function isRookThreatening(a, b, c, d) {
+            return a === c || b === d;
+        }
+
+        function isBishopThreatening(a, b, c, d) {
+            return Math.abs(a - c) === Math.abs(b - d);
+        }
+
+        function isQueenThreatening(a, b, c, d) {
+            return isRookThreatening(a, b, c, d) || isBishopThreatening(a, b, c, d);
+        }
+
+        function isKnightThreatening(a, b, c, d) {
+            return (Math.abs(a - c) === 2 && Math.abs(b - d) === 1) || (Math.abs(a - c) === 1 && Math.abs(b - d) === 2);
+        }
+
+        function isKingThreatening(a, b, c, d) {
+            return Math.abs(a - c) <= 1 && Math.abs(b - d) <= 1;
+        }
+
+        function canWhiteMove(a, b, e, f, whitePiece) {
+            if (whitePiece === 'rook') {
+                return isRookThreatening(a, b, e, f);
+            } else if (whitePiece === 'bishop') {
+                return isBishopThreatening(a, b, e, f);
+            } else if (whitePiece === 'queen') {
+                return isQueenThreatening(a, b, e, f);
+            } else if (whitePiece === 'knight') {
+                return isKnightThreatening(a, b, e, f);
+            } else if (whitePiece === 'king') {
+                return isKingThreatening(a, b, e, f);
+            }
+            return false;
+        }
+
+        function isBlackThreatening(c, d, e, f, blackPiece) {
+            if (blackPiece === 'rook') {
+                return isRookThreatening(c, d, e, f);
+            } else if (blackPiece === 'bishop') {
+                return isBishopThreatening(c, d, e, f);
+            } else if (blackPiece === 'queen') {
+                return isQueenThreatening(c, d, e, f);
+            } else if (blackPiece === 'knight') {
+                return isKnightThreatening(c, d, e, f);
+            } else if (blackPiece === 'king') {
+                return isKingThreatening(c, d, e, f);
+            }
+            return false;
+        }
+
+        function updateTargetCoordinates() {
+            let a = parseInt(document.getElementById('whiteX').value);
+            let b = parseInt(document.getElementById('whiteY').value);
+            let whitePiece = document.getElementById('whitePiece').value;
+
+            let targetX = document.getElementById('targetX');
+            let targetY = document.getElementById('targetY');
+
+            targetX.innerHTML = '';
+            targetY.innerHTML = '';
+
+            for (let i = 1; i <= 8; i++) {
+                for (let j = 1; j <= 8; j++) {
+                    if (canWhiteMove(a, b, i, j, whitePiece)) {
+                        let optionX = document.createElement('option');
+                        optionX.value = i;
+                        optionX.textContent = i;
+                        targetX.appendChild(optionX);
+
+                        let optionY = document.createElement('option');
+                        optionY.value = j;
+                        optionY.textContent = j;
+                        targetY.appendChild(optionY);
+                    }
+                }
+            }
+        }
+
+        function checkMove() {
+            let a = parseInt(document.getElementById('whiteX').value);
+            let b = parseInt(document.getElementById('whiteY').value);
+            let c = parseInt(document.getElementById('blackX').value);
+            let d = parseInt(document.getElementById('blackY').value);
+            let e = parseInt(document.getElementById('targetX').value);
+            let f = parseInt(document.getElementById('targetY').value);
+
+            let whitePiece = document.getElementById('whitePiece').value;
+            let blackPiece = document.getElementById('blackPiece').value;
+
+            let canMove = canWhiteMove(a, b, e, f, whitePiece);
+            let isUnderThreat = isBlackThreatening(c, d, e, f, blackPiece);
+
+            let resultText = '';
+            if (canMove) {
+                resultText = 'Белая фигура может пойти на поле (' + e + ', ' + f + ')';
+                if (isUnderThreat) {
+                    resultText += ', но это поле под ударом черной фигуры.';
+                } else {
+                    resultText += ' и это поле не под ударом черной фигуры.';
+                }
+            } else {
+                resultText = 'Белая фигура не может пойти на поле (' + e + ', ' + f + ').';
+                if (isUnderThreat) {
+                    resultText += ' Это поле также под ударом черной фигуры.';
+                }
+            }
+
+            document.getElementById('result').textContent = resultText;
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            populateCoordinates();
+            updateTargetCoordinates();
+        });
+    </script>
+</body>
+</html>

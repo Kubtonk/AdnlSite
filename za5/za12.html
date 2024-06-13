@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Месяц</title>
+    <script>
+  function kk() {
+     
+    let zuz = document.getElementById('circle').value;
+
+    let zuz1 = document.getElementById('square').value;
+
+    if (isNaN(zuz) || isNaN(zuz1)) {
+      document.getElementById('lol').innerText = 'Это не число';
+      return;
+    }
+
+    let zuzz = Math.PI * (zuz * zuz); // r^2
+    
+    let zuzzz = zuz1 * zuz1;
+
+    if ( zuzz > zuzzz ) { document.getElementById('lol').innerText=`${zuzz.toFixed(2)} > ${zuzzz.toFixed(2)}`; }
+
+    else if ( zuzz < zuzzz ) { document.getElementById('lol').innerText=` ${zuzz.toFixed(2)} < ${zuzzz.toFixed(2)}`; }
+
+    else { document.getElementById('lol').innerText=`${zuzz.toFixed(2)} = ${zuzzz.toFixed(2)}`; }
+ 
+
+
+
+  }
+
+    </script>
+</head>
+<body>
+  Радиус круга:<input id="circle" type="text">
+  Сторона квадрата:<input id="square" type="text"><button onclick="kk()">Вычислить у кого больше площадь</button>
+        <p id="lol"></p>
+</body>
+</html>
